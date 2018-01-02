@@ -27,13 +27,14 @@ body {
   flex-direction: column;
   width: fit-content;
   box-sizing: border-box;
+  margin: 0 auto;
 }
 
 .board-square-container {
   display: flex;
   align-items: center;
   justify-content: center;
-
+  width: 50%;
   box-sizing: border-box;
   background-color: gray;
   border: 1px solid black;
@@ -41,6 +42,11 @@ body {
 
 .board-row {
   display: flex;
+}
+
+#logo {
+  display: block;
+  margin: 0 auto;
 }
 
 .rack-row {

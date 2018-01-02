@@ -31,11 +31,11 @@ class BoardContainer extends React.Component {
 
   releasedTileAt(x, y, val, origX, origY) {
     const boardBounding = this.boardDom.getBoundingClientRect();
-    const boardX = boardBounding.top;
-    const boardY = boardBounding.left;
+    const boardY = boardBounding.top;
+    const boardX = boardBounding.left;
     const xTile = Math.floor((x - boardX) / squareSize);
     const yTile = Math.floor((y - boardY) / squareSize);
-
+    
     if (xTile + 1 > boardSize.w || xTile + 1 < 1 || yTile + 1 > boardSize.h || yTile + 1 < 1) {
       console.log('out of board');
       this.forceUpdate();
