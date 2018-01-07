@@ -1,7 +1,8 @@
 import React from 'react';
-
 import Header from './Header';
 import BoardContainer from './BoardContainer';
+import ChatContainer from './ChatContainer';
+import GameList from './GameList';
 
 class App extends React.Component {
   constructor(props) {
@@ -14,13 +15,17 @@ class App extends React.Component {
 
   render() {
     var div;
-    if (this.state.showGame){
+    if (this.state.showGame) {
       div = <div className='App'>
-      <Header />
-      <BoardContainer />
+        <Header />
+        <ChatContainer />
+        <BoardContainer />
       </div>
     } else {
-      div = <div className='Menu'> <h1>Menu features go here </h1> </div>
+      div = <div className='Menu'>
+        <ChatContainer />
+        <GameList />
+      </div>
     }
     return div;
   }
