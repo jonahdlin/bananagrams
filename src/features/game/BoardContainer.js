@@ -29,13 +29,42 @@ class BoardContainer extends React.Component {
     }
   }
 
+  increaseBoardSize(direction) {
+    const maxH = 20;
+    const maxW = 20;
+    if ((boardSize.w < maxW) && (boardSize.h) < maxH) {
+      if (direction == 'N') {
+        this.state.boardTiles.unshift([]);
+        for (Array in this.state.boardTiles[1]) {
+          this.state.boardTiles[0].push(null);
+        }
+      }
+      if (direction == 'S') {
+        this.state.boardTiles.push([]);
+        for (Array in this.state.boardTiles[1]) {
+          this.state.boardTiles[this.state.boardTiles.length - 1].push(null);
+        }
+      }
+      if (direction == 'E') {
+        for (Array in this.state.boardTiles) {
+          Array.push(null);
+        }
+      }
+      if (direction == 'W') {
+        for (Array in this.state.boardTiles) {
+          Array.unshift(null);
+        }
+      }
+    }
+  }
+
   releasedTileAt(x, y, val, origX, origY) {
     const boardBounding = this.boardDom.getBoundingClientRect();
     const boardY = boardBounding.top;
     const boardX = boardBounding.left;
     const xTile = Math.floor((x - boardX) / squareSize);
     const yTile = Math.floor((y - boardY) / squareSize);
-    
+
     if (xTile + 1 > boardSize.w || xTile + 1 < 1 || yTile + 1 > boardSize.h || yTile + 1 < 1) {
       console.log('out of board');
       this.forceUpdate();
